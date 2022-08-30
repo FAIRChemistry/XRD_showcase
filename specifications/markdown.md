@@ -2,7 +2,10 @@
 
 This is just a tiny example to show how a notebook for XRD can look like when provided with some data.
 
+
 ### Dataset
+
+...
 
 - __name*__
     - Type: string
