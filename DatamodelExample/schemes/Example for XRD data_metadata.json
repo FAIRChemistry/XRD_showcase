@@ -1,0 +1,19 @@
+{
+  "docstring": "This is just a tiny example to show how a notebook for XRD can look like when provided with some data.",
+  "enums": [],
+  "external": {},
+  "Dataset": {
+    "attributes": {
+      "name": {
+        "description": "Name of the experimentator."
+      },
+      "compound": {
+        "description": "Name of the compound."
+      },
+      "spec_information": {
+        "description": "Information about the spectrometer."
+      }
+    },
+    "docstring": "..."
+  }
+}
