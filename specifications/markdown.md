@@ -1,4 +1,4 @@
-# Example: XRD data 
+# Example for XRD data 
 
 This is just a tiny example to show how a notebook for XRD can look like when provided with some data.
 
