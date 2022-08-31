@@ -4,7 +4,7 @@ classDiagram
     
     class Dataset {
         +string name_exp
-        +string date
+        +datetime date
         +string compound
         +string sample_id
         +SpecInf spec_inf
