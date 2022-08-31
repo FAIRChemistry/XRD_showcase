@@ -55,5 +55,7 @@ Information about the spectrometer.
 
 ### Wavelength
 
+...
+
   - Type: float
   - Description: Wavelength in Angstrom.
