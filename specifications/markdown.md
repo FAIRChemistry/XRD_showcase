@@ -11,7 +11,7 @@ This is just a tiny example to show how a notebook for XRD can look like when pr
   - Type: string
   - Description: Name of the experimentator.
 - __date__
-  - Type: date
+  - Type: string
   - Description: Date when the sample was measured.
 - __compound__
   - Type: string
