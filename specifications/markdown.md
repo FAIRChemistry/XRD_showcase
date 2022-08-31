@@ -29,8 +29,8 @@ This is just a tiny example to show how a notebook for XRD can look like when pr
 Information about the spectrometer.
 
 - __wl__
-  - Type: Wavelength
-  - Description: different wavelengths of the X-ray.
+  - Type: float
+  - Description: Different wavelengths of the X-ray.
   - Multiple: True
 - __wl_ratio__
   - Type: float
@@ -53,11 +53,3 @@ Information about the spectrometer.
 - __theta2__
   - Type: float
   - Description: TwoTheta.
-
-
-### Wavelength
-
-...
-
-  - Type: float
-  - Description: Wavelength in Angstrom.
