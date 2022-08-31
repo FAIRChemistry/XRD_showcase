@@ -1,10 +1,24 @@
 ```mermaid
 classDiagram
+    Dataset *-- SpecInf
     
     class Dataset {
-        +string name
+        +string name_exp
+        +string date
         +string compound
-        +string spec_information
+        +string sample_id
+        +SpecInf spec_inf
+    }
+    
+    class SpecInf {
+        +float[0..*] wl
+        +float wl_ratio
+        +string anode
+        +float steptime
+        +float stepsize
+        +float start
+        +float theta
+        +float theta2
     }
     
 ```

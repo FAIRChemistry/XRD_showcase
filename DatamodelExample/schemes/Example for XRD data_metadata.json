@@ -4,16 +4,52 @@
   "external": {},
   "Dataset": {
     "attributes": {
-      "name": {
+      "name_exp": {
         "description": "Name of the experimentator."
+      },
+      "date": {
+        "description": "Date when the sample was measured."
       },
       "compound": {
         "description": "Name of the compound."
       },
-      "spec_information": {
+      "sample_id": {
+        "description": "ID of the measured sample"
+      },
+      "spec_inf": {
         "description": "Information about the spectrometer."
       }
     },
-    "docstring": "..."
+    "docstring": "...\n"
+  },
+  "SpecInf": {
+    "attributes": {
+      "wl": {
+        "description": "Different wavelengths of the X-ray.",
+        "multiple": "True"
+      },
+      "wl_ratio": {
+        "description": "..."
+      },
+      "anode": {
+        "description": "Material of the anode."
+      },
+      "steptime": {
+        "description": "Steptime in ..."
+      },
+      "stepsize": {
+        "description": "Stepsize in degree."
+      },
+      "start": {
+        "description": "Starting angle in degrees."
+      },
+      "theta": {
+        "description": "Theta."
+      },
+      "theta2": {
+        "description": "TwoTheta."
+      }
+    },
+    "docstring": "Information about the spectrometer."
   }
 }
