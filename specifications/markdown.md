@@ -51,7 +51,7 @@ Information about the spectrometer.
   - Description: Theta.
 - __theta2__
   - Type: float
-  - Description: 2Theta.
+  - Description: TwoTheta.
 
 ### Wavelength
 
