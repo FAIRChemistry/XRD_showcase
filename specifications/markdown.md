@@ -23,6 +23,7 @@ This is just a tiny example to show how a notebook for XRD can look like when pr
   - Type: SpecInf
   - Description: Information about the spectrometer.
 
+
 ### SpecInf
 
 Information about the spectrometer.
@@ -52,6 +53,7 @@ Information about the spectrometer.
 - __theta2__
   - Type: float
   - Description: TwoTheta.
+
 
 ### Wavelength
 
