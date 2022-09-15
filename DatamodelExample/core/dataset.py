@@ -2,45 +2,54 @@ import sdRDM
 
 from typing import Optional
 from pydantic import PrivateAttr
-from pydantic import Field
 from sdRDM.base.listplus import ListPlus
 from sdRDM.base.utils import forge_signature, IDGenerator
+
 from datetime import datetime
+from pydantic import Field
+from typing import Optional
 
 from .specinf import SpecInf
 
 
 @forge_signature
 class Dataset(sdRDM.DataModel):
+
     """..."""
 
     id: str = Field(
         description="Unique identifier of the given object.",
         default_factory=IDGenerator("datasetINDEX"),
+        xml="@id",
     )
-
-    compound: Optional[str] = Field(description="Name of the compound.", default=None)
-
     name_exp: Optional[str] = Field(
-        description="Name of the experimentator.", default=None
+        description="Name of the experimentator.",
+        default=None,
     )
 
-    date: Optional[str] = Field(
-        description="Date when the sample was measured.", default=None
+    date: Optional[datetime] = Field(
+        description="Date when the sample was measured.",
+        default=None,
+    )
+
+    compound: Optional[str] = Field(
+        description="Name of the compound.",
+        default=None,
     )
 
     sample_id: Optional[str] = Field(
-        description="ID of the measured sample", default=None
+        description="ID of the measured sample",
+        default=None,
     )
 
     spec_inf: Optional[SpecInf] = Field(
-        description="Information about the spectrometer.", default_factory=SpecInf
+        description="Information about the spectrometer.",
+        default_factory=SpecInf,
     )
 
     __repo__: Optional[str] = PrivateAttr(
-        default="git://github.com/FAIRChemistry/example_showcase.git"
+        default="git://github.com/FAIRChemistry/showcase.git"
     )
-
     __commit__: Optional[str] = PrivateAttr(
-        default="8616086697bd98fa32c63145943156e8935b007c"
+        default="a40c39da58c614e7bd3531017faa35c743956f2c"
     )
