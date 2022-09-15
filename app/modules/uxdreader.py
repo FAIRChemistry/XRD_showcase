@@ -4,6 +4,8 @@ import os
 from pathlib import Path
 from io import StringIO
 from typing import List
+from datetime import datetime
+
 
 
 class UXDReader:
@@ -12,7 +14,7 @@ class UXDReader:
 
         path_list = list(Path(path_to_directory).glob("*.UXD"))
         self.input_files = {file.stem: file for file in path_list if file.is_file()}
-        self.content = {}
+        self.meta_data = {}
         self.data = pd.DataFrame()
 
     def __repr__(self):
@@ -28,11 +30,28 @@ class UXDReader:
             if '=' in line:
                 key_value = re.split('=', line.strip(r'_'))
                 try:
-                    self.content[key_value[0]] = float(key_value[1].strip("'"))
+                    self.meta_data[key_value[0]] = float(key_value[1].strip("'"))
                 except ValueError:
-                    self.content[key_value[0]] = key_value[1].strip("'")
-        content = self.content
-        return content
+                    self.meta_data[key_value[0]] = key_value[1].strip("'")
+        meta_data = self.meta_data
+        self.convert_datetime(meta_data)
+        return meta_data
+
+    def convert_datetime(self,meta_data):
+
+        datemeasured = meta_data['DATEMEASURED']
+        pattern_date = r"([0-9]{1,2})\-([A-Za-z]*)\-([0-9]{4})\s([0-9]{2})\:([0-9]{2})\:([0-9]{2})"
+        months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
+        date_raw = re.findall(pattern_date, datemeasured)[0]
+        datum = []
+        for part in date_raw:
+            try:
+                datum.append(int(part))
+            except ValueError:
+                datum.append(months.index(part.lower())+1)
+        date = datetime(datum[2], datum[1], datum[0], datum[3], datum[4], datum[5])
+        meta_data['DATEMEASURED']= date
+
 
     def extract_data(self, filestem: str) -> pd.DataFrame:
 
