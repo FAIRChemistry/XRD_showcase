@@ -17,11 +17,16 @@ class UXDReader:
         self.meta_data = {}
         self.data = pd.DataFrame()
 
+
     def __repr__(self):
+
         return 'UXDReader'
 
+
     def available_files(self):
+
         return {count: value for count, value in enumerate(self.input_files)}
+
 
     def extract_meta_data(self, filestem: str):
         
@@ -35,7 +40,10 @@ class UXDReader:
                     self.meta_data[key_value[0]] = key_value[1].strip("'")
         meta_data = self.meta_data
         self.convert_datetime(meta_data)
+        self.rename_2theta(meta_data)
+        self.concatinate_wls(meta_data)
         return meta_data
+
 
     def convert_datetime(self,meta_data):
 
@@ -53,6 +61,29 @@ class UXDReader:
         meta_data['DATEMEASURED']= date
 
 
+    def rename_2theta(self, meta_data):
+
+        meta_data['THETA2'] = meta_data.pop('2THETA')
+
+
+    def check_for_floats(self, meta_data):
+
+        pattern_float = r"[0-9]\.[0-9]"
+        for key, value in meta_data.items():
+            if re.search(pattern_float, value):
+                meta_data[key] = float(value)
+
+
+    def concatinate_wls(self, meta_data):
+        pattern_wl = r"(WL[1-9]{1})"
+        match_objects = [re.search(pattern_wl, key) for key in meta_data if re.search(pattern_wl, key) is not None ]
+        keys = [item.groups()[0] for item in match_objects]
+        wls = [(meta_data[key]) for key in keys]
+        for key in keys:
+            meta_data.pop(key)
+        meta_data['WLS'] = wls
+
+
     def extract_data(self, filestem: str) -> pd.DataFrame:
 
         raw_data = ''
@@ -61,6 +92,7 @@ class UXDReader:
                 raw_data= raw_data + line
         data = pd.read_csv(StringIO(raw_data), sep='      ', names=['Angle', 'Intensity'], engine='python')
         return data
+
 
 
 
