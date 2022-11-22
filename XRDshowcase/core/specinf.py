@@ -44,5 +44,5 @@ class SpecInf(sdRDM.DataModel):
     )
 
     __commit__: Optional[str] = PrivateAttr(
-        default="a6fa5ed92b56a8d67074f6f8a1d4d3fcca476f94"
+        default="3c73978ba7313281e1bee2de165e582fb355b4be"
     )

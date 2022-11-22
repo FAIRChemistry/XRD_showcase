@@ -7,7 +7,6 @@ from pydantic import Field
 from sdRDM.base.listplus import ListPlus
 from sdRDM.base.utils import forge_signature, IDGenerator
 from datetime import datetime
-
 from .specinf import SpecInf
 
 
@@ -36,7 +35,7 @@ class Dataset(sdRDM.DataModel):
     )
 
     spec_inf: Optional[SpecInf] = Field(
-        description="Information about the spectrometer.", default_factory=SpecInf
+        description="Information about the spectrometer.", default=None
     )
 
     __repo__: Optional[str] = PrivateAttr(
@@ -44,5 +43,5 @@ class Dataset(sdRDM.DataModel):
     )
 
     __commit__: Optional[str] = PrivateAttr(
-        default="a6fa5ed92b56a8d67074f6f8a1d4d3fcca476f94"
+        default="3c73978ba7313281e1bee2de165e582fb355b4be"
     )
