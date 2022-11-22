@@ -73,7 +73,7 @@ class UXDReader:
         for line in open(self.input_files[filestem], 'r'): 
             if '=' not in line and ';' not in line and '_' not in line:
                 raw_data= raw_data + line
-        data = pd.read_csv(StringIO(raw_data), sep='      ', names=['Angle', 'Intensity'], engine='python')
+        data = pd.read_csv(StringIO(raw_data), sep='      ', names=['Angle_exp', 'Intensity_exp'], engine='python')
         return data
 
 
